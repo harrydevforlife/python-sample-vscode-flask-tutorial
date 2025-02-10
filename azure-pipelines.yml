@@ -23,8 +23,9 @@ stages:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          az --version
-          az account show
+          # az --version
+          # az account show
+          az ml job list --output table --resource-group MLOPS --workspace-name Workspace
     - script: |
         echo "Restoring project dependencies..."
       displayName: 'Restore dependencies'
