@@ -1,4 +1,5 @@
 # Python package
+
 # Create and test a Python package on multiple Python versions.
 # Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
@@ -16,6 +17,14 @@ stages:
   - job: BuildJob
     displayName: 'Build Job'
     steps:
+    - task: AzureCLI@2
+      inputs:
+        azureSubscription: 'for PL'
+        scriptType: 'ps'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          az --version
+          az account show
     - script: |
         echo "Restoring project dependencies..."
       displayName: 'Restore dependencies'
